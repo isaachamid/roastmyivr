@@ -56,6 +56,7 @@ Body (application/json):
 {
   "task": "FailProcess"
 }
+```
 #### Cancel retry roasting process
 
 |HTTP Method |URL                                               |
