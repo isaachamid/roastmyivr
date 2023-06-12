@@ -34,7 +34,7 @@ npm start
 ```node
 Body (application/json):
 {
-  "telephoneNumber": "611800953737",
+  "telephoneNumber": "61XXXXXXXXX",
   "findHiddenMenus": true,
   "webhookUrl": "string"
 }
@@ -55,6 +55,14 @@ Body (application/json):
 Body (application/json):
 {
   "task": "FailProcess"
+}
+Body (application/json):
+{
+  "task": "GenerateReportImmediately"
+}
+Body (application/json):
+{
+  "task": "GenerateReportAsSoonAsPossible"
 }
 ```
 #### Cancel retry roasting process
