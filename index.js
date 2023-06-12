@@ -20,10 +20,11 @@ app.post('/ivr/start', async (req, res) => {
         .catch((err) => {
             console.log(err);
             res.status(err.response.status).send({
-                message: err.message
+                message: err.message,
+                data: err.response.data
             });
         });
-    });
+});
 
 // get IVR roasting report that include every things
 app.get('/ivr/:ivrId', async (req, res) => {
@@ -40,10 +41,11 @@ app.get('/ivr/:ivrId', async (req, res) => {
         .catch((err) => {
             console.log(err);
             res.status(err.response.status).send({
-                message: err.message
+                message: err.message,
+                data: err.response.data
             });
         });
-    });
+});
 
 // terminate roasting process
 app.patch('/ivr/:ivrId/terminate', async (req, res) => {
@@ -55,12 +57,34 @@ app.patch('/ivr/:ivrId/terminate', async (req, res) => {
         }
     }
 
-    axios.patch(apiPath, {"task": "FailProcess"}, config)
+    axios.patch(apiPath, { "task": "FailProcess" }, config)
         .then((response) => res.json(response.data))
         .catch((err) => {
             console.log(err);
             res.status(err.response.status).send({
-                message: err.message
+                message: err.message,
+                data: err.response.data
+            });
+        });
+});
+
+// cancel retry roasting process
+app.patch('/ivr/:ivrId/cancel-retry', async (req, res) => {
+    const apiPath = `${process.env.BASE_API}/portal/ivrs/${req.params.ivrId}/process/cancel-retry`;
+    const config = {
+        headers: {
+            'x-api-key': process.env.ROAST_API_KEY,
+            'x-secret-key': process.env.ROAST_SECRET_KEY
+        }
+    }
+
+    axios.patch(apiPath, {}, config)
+        .then((response) => res.json(response.data))
+        .catch((err) => {
+            console.log(err);
+            res.status(err.response.status).send({
+                message: err.message,
+                data: err.response.data
             });
         });
 });
