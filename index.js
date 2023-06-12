@@ -17,8 +17,13 @@ app.post('/ivr/start', async (req, res) => {
     }
     axios.post(apiPath, req.body, config)
         .then((response) => res.json(response.data))
-        .catch((err) => console.log(err));
-});
+        .catch((err) => {
+            console.log(err);
+            res.status(err.response.status).send({
+                message: err.message
+            });
+        });
+    });
 
 // get IVR roasting report that include every things
 app.get('/ivr/:ivrId', async (req, res) => {
@@ -32,7 +37,32 @@ app.get('/ivr/:ivrId', async (req, res) => {
 
     axios.get(apiPath, {}, config)
         .then((response) => res.json(response.data))
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            console.log(err);
+            res.status(err.response.status).send({
+                message: err.message
+            });
+        });
+    });
+
+// terminate roasting process
+app.patch('/ivr/:ivrId/terminate', async (req, res) => {
+    const apiPath = `${process.env.BASE_API}/portal/ivrs/${req.params.ivrId}/process/terminate`;
+    const config = {
+        headers: {
+            'x-api-key': process.env.ROAST_API_KEY,
+            'x-secret-key': process.env.ROAST_SECRET_KEY
+        }
+    }
+
+    axios.patch(apiPath, {"task": "FailProcess"}, config)
+        .then((response) => res.json(response.data))
+        .catch((err) => {
+            console.log(err);
+            res.status(err.response.status).send({
+                message: err.message
+            });
+        });
 });
 
 const port = process.env.PORT || 3000;
