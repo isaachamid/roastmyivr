@@ -20,6 +20,21 @@ app.post('/ivr/start', async (req, res) => {
         .catch((err) => console.log(err));
 });
 
+// get IVR roasting report that include every things
+app.get('/ivr/:ivrId', async (req, res) => {
+    const apiPath = `${process.env.BASE_API}/portal/ivrs/${req.params.ivrId}`;
+    const config = {
+        headers: {
+            'x-api-key': process.env.ROAST_API_KEY,
+            'x-secret-key': process.env.ROAST_SECRET_KEY
+        }
+    }
+
+    axios.get(apiPath, {}, config)
+        .then((response) => res.json(response.data))
+        .catch((err) => console.log(err));
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`API server listening on port ${port}`);
