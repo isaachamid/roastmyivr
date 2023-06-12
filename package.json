@@ -1,0 +1,28 @@
+{
+  "name": "roastmyivr",
+  "version": "1.0.0",
+  "description": "Test an IVR number with roastmyivr.com APIs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaachamid/roastmyivr.git"
+  },
+  "keywords": [
+    "IVR",
+    "RoastMyIVR",
+    "NodeJS"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isaachamid/roastmyivr/issues"
+  },
+  "homepage": "https://github.com/isaachamid/roastmyivr#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
