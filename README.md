@@ -56,10 +56,16 @@ Body (application/json):
 {
   "task": "FailProcess"
 }
+
+OR
+
 Body (application/json):
 {
   "task": "GenerateReportImmediately"
 }
+
+OR
+
 Body (application/json):
 {
   "task": "GenerateReportAsSoonAsPossible"
