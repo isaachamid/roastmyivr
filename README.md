@@ -7,7 +7,7 @@ Test an IVR number with roastmyivr.com APIs
 git clone https://github.com/isaachamid/roastmyivr.git
 cd roastmyivr
 ```
-### 2. Register and get developer credentials
+### 2. Register as a developer, create application in dashboard and get credentials
 ```bash
 https://developer.roastmyivr.com/
 ```
